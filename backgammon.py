@@ -3,23 +3,22 @@ import sys
 import matplotlib.pyplot as plt
 def master_list(arg, condi):	
   ary = []
-	length = len(arg)
-	if condi == True:
+  length = len(arg)
+  if condi == True:
 	  for i in range(0,length,3):
 	    ary.append([int(arg[i]),int(arg[i+1])])
 	    clean(ary,condi)
-	    return ary 
-	 elif condi==False:
-	   for i in range(0,length,3):
-	    ary.append([int(arg[i])])
-	    ary.append([int(arg[i+1])])
-	    clean(ary,condi)
-	    return ary 
+  else:
+    for i in range(0,length,3):
+      ary.append([int(arg[i])])
+      ary.append([int(arg[i+1])])
+      clean(ary,condi)
+  return ary 
 	    
 def clean(arg,condi):
-  if condi == False;
+  if condi == False:
     for i in arg:
-      if i==0;
+      if i==0:
         arg.remove(i)
   elif condi == True:
     for i in arg:
