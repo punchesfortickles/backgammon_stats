@@ -14,8 +14,7 @@ import numpy as np
 def master_list(arg):  
     ary = []
     for i in arg:
-        if i!=0.0:    
-            ary.append([int(math.floor(i/10.)),
+        ary.append([int(math.floor(i/10.)),
                        int(i-10*int(math.floor(i/10.)))])
     return clean_list(ary)
  
@@ -33,12 +32,13 @@ def clean_list(arg):
    
 def histogram(arg):
     No_Rolls = len(arg)
-    plt.xlim([2,13])
-    x = np.linspace(2,13,No_Rolls)
-    plt.plot(x,mlab.normpdf(x,np.average(arg),np.std(arg)))
-    plt.hist(arg,bins = [2,3,4,5,6,7,8,9,10,11,12,13],normed =1)
+    plt.xlim([1,13])
+    x =  [1/36.,2/36.,3/36.,4/36.,5/36.,1/6.,5/36.,4/36.,3/36.,2/36.,1/36.]
+   # plt.plot(x,mlab.normpdf(x,np.average(arg),np.std(arg)))
+    plt.hist(arg,bins=np.arange(1,13)+0.5,normed =1,alpha = 0.75)
+    plt.bar(np.arange(2,13),x,align = 'center',width = 0.5,alpha=1,color = 'r')
     plt.title("Backgammon")
-    plt.grid(True)
+    plt.grid(False)
     plt.ylabel("# of rolls = {}".format(len(arg)))  
     plt.xlabel('Sum of roll')
     plt.savefig('myfig')
